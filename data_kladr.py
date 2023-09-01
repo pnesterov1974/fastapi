@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, text
 
 from schema import Kladr
 
-CONNECTION_STR = r"mssql+pymssql://sa:Exptsci123@192.168.1.80/kladr"
+CONNECTION_STR = r"mssql+pymssql://sa:Exptsci123@192.168.1.78/kladr2"
 
 ####### 1-st LEVEL defs  Iter & GetRecordCount
 
@@ -12,14 +12,14 @@ def iter_kladr_data():
     sql = """
     SELECT TOP(15)
            ROW_NUMBER() OVER(ORDER BY [Code]) AS [IID],
-           [Code] AS [CODE],
-           [Name] AS [NAME],
-           [Socr] AS [SOCR],
-           [Index] AS [INDEX],
-           [Gninmb] AS [GNINMB],
-           [Uno] AS [UNO],
-           [Ocatd] AS [OCATD],
-           [Status] AS [STATUS]
+           [Code],
+           [Name],
+           [Socr],
+           [Index],
+           [Gninmb],
+           [Uno],
+           [Ocatd],
+           [Status]
     FROM [dbo].[Kladr]
     """
     with eng.connect() as conn:
@@ -50,14 +50,14 @@ def iter_kladr_data_paged(page_size: int, current_page: int, status: int | None 
     @WHERE
 	)
 	SELECT [IID] AS [IID],
-	       [Code] AS [CODE],
-           [Name] AS [NAME],
-           [Socr] AS [SOCR],
-           [Index] AS [INDEX],
-           [Gninmb] AS [GNINMB],
-           [Uno] AS [UNO],
-           [Ocatd] AS [OCATD],
-           [Status] AS [Status]
+	       [Code],
+           [Name],
+           [Socr],
+           [Index],
+           [Gninmb],
+           [Uno],
+           [Ocatd],
+           [Status]
 	FROM [Kladr]
 	WHERE [IID] BETWEEN (({current_page} - 1) * {page_size}) AND ({current_page} * {page_size} - 1);
     """
@@ -120,6 +120,6 @@ def get_pyd_kladr_data_paged(
 
 # -------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
-    # print(get_kladr_data())
+    #print(get_kladr_data())
     print("\n".join([str(r) for r in get_pyd_kladr_data()]))
     print(get_kladr_recordcount())

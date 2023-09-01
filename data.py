@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, text
 
-CONNECTION_STR = r'mssql+pymssql://sa:Exptsci123@192.168.1.78/kladr'
+CONNECTION_STR = r'mssql+pymssql://sa:Exptsci123@192.168.1.78/kladr2'
 
 # def iter_socrbase_data():
 #     eng = create_engine(CONNECTION_STR);
