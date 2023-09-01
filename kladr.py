@@ -18,8 +18,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-#api vs site, kladr vs gar
-
 # uvicorn kladr:app --reload
 # ---------------------------------------------------------------------------------------
 if __name__ == "__main__":
