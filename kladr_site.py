@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, responses
 from starlette.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -12,6 +12,9 @@ from data_socrbase import (
     # get_socrbase_fieldnames,
 )
 
+#@kladr_site_router.get("/favicon.ico")
+#def favicon():
+#    return responses.RedirectResponse(url='/static/img/favicon.ico')
 
 @kladr_site_router.get("/", response_class=HTMLResponse)
 def site_root(request: Request):
@@ -19,10 +22,8 @@ def site_root(request: Request):
         "main.html", {"request": request}
         )
 
-
 @kladr_site_router.get("/socrbase", response_class=HTMLResponse)
 def socrbase(request: Request):
-    # return get_pyd_socrbase_data()
     return templates.TemplateResponse("socrbase.html", {"request": request})
 
 
